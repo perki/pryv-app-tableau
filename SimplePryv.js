@@ -196,7 +196,7 @@ var authSettings = {
     }
   ],
   // set this if you don't want a popup
-  returnURL: false,
+  returnURL: 'self#',
   // use the built-in auth button (optional)
   spanButtonID: 'pryv-button',
   callbacks: {
