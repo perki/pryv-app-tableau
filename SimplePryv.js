@@ -14,7 +14,7 @@
   myConnector.getSchema = function(schemaCallback) {
 
 
-    var event_default_cols = [{
+    var event_num_cols = [{
       id: "id",
       dataType: tableau.dataTypeEnum.string
     }, {
@@ -34,18 +34,12 @@
       id: "type",
       alias: "type",
       dataType: tableau.dataTypeEnum.string
-    }];
-
-
-
-
-
-    var event_num_cols = event_default_cols.concat([{
+    }, {
       id: "content",
       alias: "content",
       dataType: tableau.dataTypeEnum.float,
       columnRole: tableau.columnRoleEnum.measure
-    }]);
+    }];
 
     var eventNumTable = {
       id: "eventNum",
@@ -54,7 +48,27 @@
     };
 
 
-    var event_location_cols = event_default_cols.concat([{
+    var event_location_cols = [{
+      id: "id",
+      dataType: tableau.dataTypeEnum.string
+    }, {
+      id: "streamId",
+      alias: "streamId",
+      dataType: tableau.dataTypeEnum.string,
+      foreignKey: {tableId: 'stream', columnId: 'id'}
+    }, {
+      id: "time",
+      alias: "time",
+      dataType: tableau.dataTypeEnum.datetime
+    }, {
+      id: "duration",
+      alias: "duration",
+      dataType: tableau.dataTypeEnum.float
+    }, {
+      id: "type",
+      alias: "type",
+      dataType: tableau.dataTypeEnum.string
+    }, {
       id: "lat",
       alias: "latitude",
       dataType: tableau.dataTypeEnum.float
@@ -62,7 +76,7 @@
       id: "lon",
       alias: "longitude",
       dataType: tableau.dataTypeEnum.float
-    }]);
+    }];
 
     var eventLocationTable = {
       id: "eventLocation",
