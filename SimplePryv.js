@@ -225,14 +225,7 @@
     }
   };
 
-  /**
-   * retrieve the registerURL from URL parameters
-   */
-  function getRegisterURL() {
-    return pryv.utility.urls.parseClientURL().parseQuery()['reg-pryv'] || pryv.utility.urls.parseClientURL().parseQuery()['pryv-reg'];
-  }
 
-  var customRegisterUrl = getRegisterURL();
   if (customRegisterUrl) {
     pryv.Auth.config.registerURL = {host: customRegisterUrl, 'ssl': true};
   }
@@ -245,7 +238,11 @@
     if (pyConnection) {
       if (! tableau.password) {
         tableau.password = pyConnection.auth;
-        tableau.username = pyConnection.username + '.' + pyConnection.domain
+        tableau.username = pyConnection.username + '.' + pyConnection.domain  ;
+        if (customDomain)  {
+          tableau.username = pyConnection.username + '.' + customDomain ;
+        }
+
       }
       return pyConnection;
     }
