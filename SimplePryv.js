@@ -5,6 +5,8 @@
 
 // Define our Web Data Connector
 (function(){
+
+
   var myConnector = tableau.makeConnector();
 
   var pyConnection = null;
@@ -222,6 +224,19 @@
       error: function (code, message) { }
     }
   };
+
+  /**
+   * retrieve the registerURL from URL parameters
+   */
+  function getRegisterURL() {
+    return pryv.utility.urls.parseClientURL().parseQuery()['reg-pryv'] || pryv.utility.urls.parseClientURL().parseQuery()['pryv-reg'];
+  }
+
+  var customRegisterUrl = getRegisterURL();
+  if (customRegisterUrl) {
+    pryv.Auth.config.registerURL = {host: customRegisterUrl, 'ssl': true};
+  }
+
 
   pryv.Auth.setup(authSettings);
 
