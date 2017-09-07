@@ -324,7 +324,7 @@
     var filter = new pryv.Filter({limit : 10000});
     getPYConnection().events.get(filter, function (err, es) {
       if (err) {
-        throw err;
+        throw JSON.toString(err);
       }
       if (! es) {
         es = [];
@@ -336,6 +336,12 @@
 
   function getStreams(table, doneCallback) {
     getPYConnection().streams.get(null, function(err, streams) {
+      if (err) {
+        throw JSON.toString(err);
+      }
+      if (! streams) {
+        return  doneCallback();
+      }
       function addChilds(tableD, streamArray) {
         for (var i = 0; i < streamArray.length; i++) {
           var stream = streamArray[i];
