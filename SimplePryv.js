@@ -323,6 +323,12 @@
     if (events) return doneCallback(events);
     var filter = new pryv.Filter({limit : 10000});
     getPYConnection().events.get(filter, function (err, es) {
+      if (err) {
+        throw err;
+      }
+      if (! es) {
+        es = [];
+      }
       var events = es;
       return doneCallback(events);
     });
