@@ -245,7 +245,7 @@
     if (pyConnection) {
       if (! tableau.password) {
         tableau.password = pyConnection.auth;
-        tableau.username = pyConnection.username + '.' + pyConnection.settings.domain
+        tableau.username = pyConnection.username + '.' + pyConnection.domain
       }
       return pyConnection;
     }
