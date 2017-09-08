@@ -226,7 +226,7 @@
   };
 
 
-  if (customRegisterUrl) {
+  if (typeof variable !== 'undefined' && customRegisterUrl) {
     pryv.Auth.config.registerURL = {host: customRegisterUrl, 'ssl': true};
   }
 
