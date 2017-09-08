@@ -226,7 +226,7 @@
   };
 
 
-  if (typeof variable !== 'undefined' && customRegisterUrl) {
+  if (typeof customRegisterUrl !== 'undefined' && customRegisterUrl) {
     pryv.Auth.config.registerURL = {host: customRegisterUrl, 'ssl': true};
   }
 
@@ -239,7 +239,7 @@
       if (! tableau.password) {
         tableau.password = pyConnection.auth;
         tableau.username = pyConnection.username + '.' + pyConnection.domain  ;
-        if (customDomain)  {
+        if (typeof customDomain !== 'undefined' && customDomain)  {
           tableau.username = pyConnection.username + '.' + customDomain ;
         }
 
